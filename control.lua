@@ -15,7 +15,7 @@ require "config"
 -- require "locale/softmod-modules-vanilla/player-vanilla"
 -- require "locale/softmod-modules-vanilla/rocket-vanilla"
 
--- Import My Soft-Mod Modules
+-- Import DDDGamer's Soft-Mod Modules
 require "locale/softmod-modules-dz/player"
 require "locale/softmod-modules-dz/player-logging"
 require "locale/softmod-modules-dz/anti-griefing"

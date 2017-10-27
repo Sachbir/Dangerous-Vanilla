@@ -9,6 +9,7 @@ require "locale/softmod-modules-util/GUI"
 require "locale/softmod-modules-util/Time"
 require "locale/softmod-modules-util/Time_Rank"
 require "locale/softmod-modules-util/Colors"
+require "locale/softmod-modules-util/Playtime_Log"
 
 local OWNER = "UberJuice"
 
@@ -45,7 +46,7 @@ function on_player_leave(event)
 end
 
 
--- Toggle playerlist is called if gui element is playerlist button
+-- Does things if a gui element is clicked
 -- @param event on_gui_click
 local function on_gui_click(event)
   local player = game.players[event.player_index]
@@ -53,6 +54,10 @@ local function on_gui_click(event)
 
   if el_name == "btn_menu_playerlist" then
     GUI.toggle_element(player.gui.left["frame_playerlist"])
+  end
+
+  if el_name == "save_playtimes" then
+    Playtime_Log.generate_log()
   end
 end
 
@@ -66,7 +71,7 @@ function draw_playerlist_btn(player)
 end
 
 
--- Draws a pane on the left listing all of the players currentely on the server
+-- Draws a pane on the left listing all of the players currentely on the server, and a save button for admins
 function draw_playerlist_frame()
   for i, player in pairs(game.players) do
     -- Draw the vertical frame on the left if its not drawn already
@@ -89,6 +94,9 @@ function draw_playerlist_frame()
         add_player_to_list(player, p_online, player_rank.color, player_rank.tag)
       end
     end
+    if player.name == OWNER then
+      player.gui.left["frame_playerlist"].add { type = "button", caption = "Save Times", name = "save_playtimes", tooltip = "Saves played time to a file" }
+    end
   end
 end
 
@@ -99,15 +107,15 @@ end
 -- @param color
 -- @param tag
 function add_player_to_list(player, p_online, color, tag)
-  if (tag == "Commoner") then
-    local played_hrs = tostring(Time.tick_to_hour(p_online.online_time))
+  if (tag == "Regular") then
+    local played_hrs = tostring(Time.tick_to_hour(Playtime_Log.get_total_ticks(player)))
     player.gui.left["frame_playerlist"].add {
       type = "label", style = "caption_label_style", name = p_online.name,
       caption = { "", played_hrs, " hr - ", p_online.name }
     }
     player.gui.left["frame_playerlist"][p_online.name].style.font_color = color
   else
-    local played_hrs = tostring(Time.tick_to_hour(p_online.online_time))
+    local played_hrs = tostring(Time.tick_to_hour(Playtime_Log.get_total_ticks(player)))
     player.gui.left["frame_playerlist"].add {
       type = "label", style = "caption_label_style", name = p_online.name,
       caption = { "", played_hrs, " hr - ", p_online.name, " ", "[" .. tag .. "]" }

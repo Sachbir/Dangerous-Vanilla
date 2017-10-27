@@ -7,6 +7,7 @@
 -- Dependencies
 require "locale/softmod-modules-util/Time"
 require "locale/softmod-modules-util/Colors"
+require "locale/softmod-modules-util/Playtime_Log"
 
 Time_Rank = {}
 
@@ -14,10 +15,10 @@ Time_Rank = {}
 Time_Rank.RANKS = {
   lvl1 = { time = 0,    color = Colors.lightgrey,     tag = "Newcomer", },
   lvl2 = { time = 0.16, color = Colors.lightyellow,   tag = "Newcomer", },
-  lvl3 = { time = 1,    color = Colors.green,         tag = "Commoner", },
-  lvl4 = { time = 3,    color = Colors.green,         tag = "Commoner", },
-  lvl5 = { time = 9,    color = Colors.green,         tag = "Commoner", },
-  lvl6 = { time = 10,   color = Colors.green,         tag = "Commoner", },
+  lvl3 = { time = 1,    color = Colors.green,         tag = "Regular", },
+  lvl4 = { time = 3,    color = Colors.green,         tag = "Regular", },
+  lvl5 = { time = 9,    color = Colors.green,         tag = "Regular", },
+  lvl6 = { time = 10,   color = Colors.green,         tag = "Regular", },
 }
 
 
@@ -25,17 +26,17 @@ Time_Rank.RANKS = {
 -- @param player
 -- @return Rank obj (time, color, tag)
 function Time_Rank.get_rank(player)
-  if Time.tick_to_hour(player.online_time) >= Time_Rank.RANKS.lvl6.time then
+  if Time.tick_to_hour(Playtime_Log.get_total_ticks(player)) >= Time_Rank.RANKS.lvl6.time then
       return Time_Rank.RANKS.lvl6
-  elseif Time.tick_to_hour(player.online_time) >= Time_Rank.RANKS.lvl5.time then
+  elseif Time.tick_to_hour(Playtime_Log.get_total_ticks(player)) >= Time_Rank.RANKS.lvl5.time then
       return Time_Rank.RANKS.lvl5
-  elseif Time.tick_to_hour(player.online_time) >= Time_Rank.RANKS.lvl4.time then
+  elseif Time.tick_to_hour(Playtime_Log.get_total_ticks(player)) >= Time_Rank.RANKS.lvl4.time then
       return Time_Rank.RANKS.lvl4
-  elseif Time.tick_to_hour(player.online_time) >= Time_Rank.RANKS.lvl3.time then
+  elseif Time.tick_to_hour(Playtime_Log.get_total_ticks(player)) >= Time_Rank.RANKS.lvl3.time then
       return Time_Rank.RANKS.lvl3
-  elseif Time.tick_to_hour(player.online_time) >= Time_Rank.RANKS.lvl2.time then
+  elseif Time.tick_to_hour(Playtime_Log.get_total_ticks(player)) >= Time_Rank.RANKS.lvl2.time then
       return Time_Rank.RANKS.lvl2
-  elseif Time.tick_to_hour(player.online_time) < Time_Rank.RANKS.lvl2.time then
+  elseif Time.tick_to_hour(Playtime_Log.get_total_ticks(player)) < Time_Rank.RANKS.lvl2.time then
       return Time_Rank.RANKS.lvl1
   end
   -- Default return
