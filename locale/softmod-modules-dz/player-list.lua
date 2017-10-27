@@ -107,15 +107,14 @@ end
 -- @param color
 -- @param tag
 function add_player_to_list(player, p_online, color, tag)
+  local played_hrs = tostring(Time.tick_to_hour(Playtime_Log.get_total_ticks(p_online)))  
   if (tag == "Regular") then
-    local played_hrs = tostring(Time.tick_to_hour(Playtime_Log.get_total_ticks(player)))
     player.gui.left["frame_playerlist"].add {
       type = "label", style = "caption_label_style", name = p_online.name,
       caption = { "", played_hrs, " hr - ", p_online.name }
     }
     player.gui.left["frame_playerlist"][p_online.name].style.font_color = color
   else
-    local played_hrs = tostring(Time.tick_to_hour(Playtime_Log.get_total_ticks(player)))
     player.gui.left["frame_playerlist"].add {
       type = "label", style = "caption_label_style", name = p_online.name,
       caption = { "", played_hrs, " hr - ", p_online.name, " ", "[" .. tag .. "]" }
