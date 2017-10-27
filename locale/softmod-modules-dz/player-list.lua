@@ -94,7 +94,7 @@ function draw_playerlist_frame()
         add_player_to_list(player, p_online, player_rank.color, player_rank.tag)
       end
     end
-    if player.name == OWNER then
+    if player.admin then
       player.gui.left["frame_playerlist"].add { type = "button", caption = "Save Times", name = "save_playtimes", tooltip = "Saves played time to a file" }
     end
   end
