@@ -8,6 +8,9 @@
 -- Import dependency modules (event must be first as its a dependency for all others)
 require "locale/softmod-modules-stdlib/Event"
 
+-- Import Redmew's Terrain Modifier
+require "locale/softmod-modules-redmew-terrain/map_layout"
+
 -- Import Config
 require "config"
 
@@ -15,22 +18,22 @@ require "config"
 -- require "locale/softmod-modules-vanilla/player-vanilla"
 -- require "locale/softmod-modules-vanilla/rocket-vanilla"
 
--- Import DDDGamer's Soft-Mod Modules
+-- Import DDDGamer Soft-Mod 
 require "locale/softmod-modules-dz/player"
 require "locale/softmod-modules-dz/player-logging"
 require "locale/softmod-modules-dz/anti-griefing"
 require "locale/softmod-modules-dz/announcements"
 require "locale/softmod-modules-dz/player-list"
+-- Import Mewmew Modules
+require "locale/softmod-modules-mewmew/poll"
+-- Import DDDGamer Soft-Mod 
 require "locale/softmod-modules-dz/game-info"
 -- require "locale/softmod-modules-dz/tasks"
 require "locale/softmod-modules-dz/show-health"
 require "locale/softmod-modules-vanilla/rocket-vanilla"
 
--- Import Mewmew's Modules
-require "locale/softmod-modules-mewmew/poll"
-
 -- Import 3Ra Soft-Mod Modules
-require "locale/softmod-modules-3ra/undecorator"
+-- require "locale/softmod-modules-3ra/undecorator"
 -- require "locale/softmod-modules-3ra/gravestone"
 -- require "locale/softmod-modules-3ra/rocket"
 -- require "locale/softmod-modules-3ra/bot"
