@@ -1,5 +1,7 @@
 -- Playtime_Log Module
 -- Manages the total time a player has online and in the records
+-- Author: Sachbir Dhanota 
+-- Github: https://github.com/Sachbir
 -- ============================================================= --
 
 
