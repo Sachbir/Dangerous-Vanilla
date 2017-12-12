@@ -15,10 +15,10 @@ Time_Rank = {}
 Time_Rank.RANKS = {
   lvl1 = { time = 0,    color = Colors.lightgrey,     tag = "Newcomer", },
   lvl2 = { time = 0.16, color = Colors.lightyellow,   tag = "Newcomer", },
-  lvl3 = { time = 1,    color = Colors.green,         tag = "Regular", },
-  lvl4 = { time = 3,    color = Colors.green,         tag = "Regular", },
-  lvl5 = { time = 9,    color = Colors.green,         tag = "Regular", },
-  lvl6 = { time = 10,   color = Colors.green,         tag = "Regular", },
+  lvl3 = { time = 1,    color = Colors.green,         tag = "", },
+  lvl4 = { time = 3,    color = Colors.green,         tag = "", },
+  lvl5 = { time = 9,    color = Colors.green,         tag = "", },
+  lvl6 = { time = 10,   color = Colors.green,         tag = "", },
 }
 
 
